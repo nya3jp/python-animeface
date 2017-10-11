@@ -8,28 +8,28 @@ AnimeFace 本体については公式サイトを参照してください:
 http://anime.udp.jp/imager-animeface.html
 
 
-インストール
------------
+pip によるインストール
+----------------------
 
-python-animeface に含まれるのはインターフェースライブラリのみです。別途 AnimeFace 本体および Python Imaging Library (PIL) をインストールする必要があります。
+バージョン 1.1 より、Linux/x86_64 環境ではビルド済みバイナリを使えるようになりました。
+以下のコマンドでインストールできます。
+
+    # pip install animeface
+
+
+手動でのインストール
+--------------------
 
 ### AnimeFace 本体のインストール
 
 公式サイトから nvxs-1.0.2.tar.gz をダウンロードして展開後、インストールしてください。
 
-    $ tar xvzf nvxs-1.0.2.tar.gz
-    $ cd nvxs-1.0.2
+    $ cd third_party/nvxs-1.0.2
     $ ./configure
     $ make
     $ sudo make install
 
-### PIL のインストール
-
-apt-get や easy\_install など、好きな方法で PIL をインストールしてください。
-
 ### python-animeface のインストール
-
-あらかじめ setuptools が必要です。
 
     $ python setup.py build
     $ sudo python setup.py install
