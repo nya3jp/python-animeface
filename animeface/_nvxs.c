@@ -177,8 +177,8 @@ static PyObject* pack_results(
         one_result, "right_eye_pos",
         Py_BuildValue(
             "((ii)(ii))",
-            face->left_eye.x, face->left_eye.y,
-            face->left_eye.width, face->left_eye.height));
+            face->right_eye.x, face->right_eye.y,
+            face->right_eye.width, face->right_eye.height));
     PyDict_SetItemString(
         one_result, "right_eye_color",
         Py_BuildValue(
