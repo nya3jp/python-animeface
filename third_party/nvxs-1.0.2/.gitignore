@@ -1,5 +1,4 @@
 /build/
-/config.*
 /libtool
 /stamp-*
 /.deps/
