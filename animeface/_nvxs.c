@@ -247,6 +247,28 @@ static PyMethodDef methods[] = {
   {NULL, NULL, 0, NULL}
 };
 
+#if PY_MAJOR_VERSION >= 3
+
+static PyModuleDef module = {
+  PyModuleDef_HEAD_INIT,
+  "animeface._nvxs",
+  NULL,
+  0,
+  methods,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+PyMODINIT_FUNC PyInit__nvxs(void) {
+  return PyModule_Create(&module);
+}
+
+#else  // PY_MAJOR_VERSION >= 3
+
 PyMODINIT_FUNC init_nvxs(void) {
   Py_InitModule("animeface._nvxs", methods);
 }
+
+#endif  // PY_MAJOR_VERSION >= 3
