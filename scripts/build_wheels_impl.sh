@@ -15,12 +15,29 @@
 
 set -ex
 
-readonly -a versions=(cp27-cp27m cp27-cp27mu cp34-cp34m cp35-cp35m cp36-cp36m)
+readonly -a versions=(cp36-cp36m cp37-cp37m cp38-cp38 cp39-cp39 cp310-cp310)
 
 if [[ ! -d /host ]]; then
     echo "This must be run in a docker container"
     exit 1
 fi
+
+export HOME=/host/build/home
+rm -rf "${HOME}"
+mkdir -p "${HOME}"
+
+# Build and install libnvxs.
+(
+    # CLAPACK tests need large stack size.
+    ulimit -s 16384
+    cd /host/third_party/nvxs-1.0.2
+    ./configure --prefix="${HOME}"
+    make
+    make install
+)
+
+export LIBRARY_PATH="${HOME}/lib"
+export LD_LIBRARY_PATH="${HOME}/lib"
 
 for version in "${versions[@]}"; do
     "/opt/python/$version/bin/pip" wheel /host -w /tmp/wheels

@@ -17,4 +17,4 @@ set -ex
 
 cd "$(dirname "$0")/.."
 
-docker run --rm -it -v "$PWD:/host" quay.io/pypa/manylinux1_x86_64 bash /host/scripts/build_wheels_impl.sh
+docker run --rm -it --user="$(id -u)" -v "$PWD:/host" quay.io/pypa/manylinux2014_x86_64 bash -x /host/scripts/build_wheels_impl.sh
