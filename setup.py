@@ -14,7 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 import setuptools
+
+
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
+    long_description = f.read()
 
 
 module1 = setuptools.Extension(
@@ -42,6 +48,7 @@ setuptools.setup(
     author_email='takahashi.shuhei@gmail.com',
     url='https://github.com/nya3jp/python-animeface',
     description='A library to detect anime faces in images.',
+    long_description=long_description,
     ext_modules=[module1],
     packages=['animeface'],
     install_requires=['pillow'],
