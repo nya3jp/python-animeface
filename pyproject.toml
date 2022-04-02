@@ -1,0 +1,8 @@
+[tool.cibuildwheel]
+before-all = [
+  "ulimit -s 16384",
+  "cd third_party/nvxs-1.0.2",
+  "./configure",
+  "make",
+  "make install",
+]
