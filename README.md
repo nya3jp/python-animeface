@@ -1,11 +1,14 @@
 # python-animeface
 
+[![Python versions](https://img.shields.io/pypi/pyversions/animeface)](https://pypi.org/project/animeface/)
+[![Build](https://github.com/nya3jp/python-animeface/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/nya3jp/python-animeface/actions/workflows/build.yaml)
+[![License](https://img.shields.io/github/license/nya3jp/python-animeface.svg)](https://github.com/nya3jp/python-animeface/blob/main/LICENSE)
+
 python-animeface is a Python wrapper of AnimeFace, a library to detect
 anime character faces in images.
 
-See also the official website of AnimeFace (in Japanese language):
-
-http://anime.udp.jp/imager-animeface.html
+See also [the official website of AnimeFace](http://anime.udp.jp/imager-animeface.html)
+(in Japanese language).
 
 
 ## Installation
