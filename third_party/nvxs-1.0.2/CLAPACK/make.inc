@@ -19,9 +19,12 @@ PLAT = _nvxs
 CC        = gcc
 # if no wrapping of the blas library is needed, uncomment next line
 #CC        = gcc -DNO_BLAS_WRAP
-CFLAGS    = -O3 -fPIC
+CFLAGS    = -O3 -fPIC -Wno-error=implicit-function-declaration
 LOADER    = gcc
-LOADOPTS  = -Wl,--allow-multiple-definition
+LOADOPTS  =
+ifeq ($(shell uname -s),Linux)
+  LOADOPTS += -Wl,--allow-multiple-definition
+endif
 NOOPT     = -O0 -fPIC
 DRVCFLAGS = $(CFLAGS)
 F2CCFLAGS = $(CFLAGS)

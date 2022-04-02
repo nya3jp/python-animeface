@@ -9,7 +9,7 @@ nv_num/nv_cov.c nv_num/nv_eigen.c nv_num/nv_vector.c nv_num/nv_distance.c nv_num
 nv_ip/nv_euclidean_color.c nv_ip/nv_gaussian5x5.c nv_ip/nv_gray.c nv_ip/nv_gray_cpu.c nv_ip/nv_integral.c nv_ip/nv_laplacian.c
 
 libnvxs_la_LIBADD = CLAPACK/liblapack_nvxs.a CLAPACK/libblas_nvxs.a CLAPACK/libtmglib_nvxs.a CLAPACK/F2CLIBS/libf2c.a
-libnvxs_la_CFLAGS = -O3 -ffast-math -msse -msse2 -Inv_core -Inv_num -Inv_ip -Inv_ml -ICLAPACK/INCLUDE
+libnvxs_la_CFLAGS = -O3 -Wno-error=implicit-function-declaration -ffast-math -msse -msse2 -Inv_core -Inv_num -Inv_ip -Inv_ml -ICLAPACK/INCLUDE
 libnvxs_la_LDFLAGS = -no-undefined -lm
 
 include_HEADERS = \
