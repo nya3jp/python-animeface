@@ -19,6 +19,10 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.3.1
+        env:
+          # TODO: Remove this option adn build wheels on Linux i686.
+          # Currently CLAPACK fails to build on Linux i686.
+          CIBW_ARCHS_LINUX: "auto64"
 
       - uses: actions/upload-artifact@v2
         with:
