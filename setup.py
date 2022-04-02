@@ -18,28 +18,24 @@ import os
 
 import setuptools
 
-
 with open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
     long_description = f.read()
 
-
-module1 = setuptools.Extension(
-    'animeface._nvxs',
-    sources=[
-        'animeface/_nvxs.c',
-    ],
-    include_dirs=[
-        'third_party/Pillow-4.2.1/libImaging',
-        'third_party/nvxs-1.0.2/nv_core',
-        'third_party/nvxs-1.0.2/nv_ip',
-        'third_party/nvxs-1.0.2/nv_ml',
-        'third_party/nvxs-1.0.2/nv_face',
-        'third_party/nvxs-1.0.2/nv_num',
-    ],
-    libraries=[
-        'nvxs',
-    ])
-
+module1 = setuptools.Extension('animeface._nvxs',
+                               sources=[
+                                   'animeface/_nvxs.c',
+                               ],
+                               include_dirs=[
+                                   'third_party/Pillow-4.2.1/libImaging',
+                                   'third_party/nvxs-1.0.2/nv_core',
+                                   'third_party/nvxs-1.0.2/nv_ip',
+                                   'third_party/nvxs-1.0.2/nv_ml',
+                                   'third_party/nvxs-1.0.2/nv_face',
+                                   'third_party/nvxs-1.0.2/nv_num',
+                               ],
+                               libraries=[
+                                   'nvxs',
+                               ])
 
 setuptools.setup(
     name='animeface',

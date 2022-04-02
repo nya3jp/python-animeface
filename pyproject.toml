@@ -5,3 +5,6 @@ before-all = [
   "make",
   "make install",
 ]
+
+[tool.yapf]
+based_on_style = "pep8"
