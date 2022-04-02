@@ -20,9 +20,10 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.3.1
         env:
-          # TODO: Remove this option adn build wheels on Linux i686.
-          # Currently CLAPACK fails to build on Linux i686.
-          CIBW_ARCHS_LINUX: "auto64"
+          # TODO: Remove this option adn build wheels for musllinux.
+          # Currently CLAPACK fails to build for musllinux due to lack of
+          # fpu_control.h.
+          CIBW_SKIP: "*-musllinux_*"
 
       - uses: actions/upload-artifact@v2
         with:
