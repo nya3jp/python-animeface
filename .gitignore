@@ -1,13 +1,5 @@
-*~
-\#*
-.\#*
-*.o
 *.pyc
-*.orig
-*.rej
-*.swp
-.DS_Store
-
+/.eggs
 /*.egg-info
 /build/
 /dist/

@@ -43,14 +43,19 @@ module1 = setuptools.Extension(
 
 setuptools.setup(
     name='animeface',
-    version='1.1.0',
     author='takahashi.shuhei@gmail.com',
     author_email='takahashi.shuhei@gmail.com',
     url='https://github.com/nya3jp/python-animeface',
     description='A library to detect anime faces in images.',
     long_description=long_description,
+    use_scm_version={
+        'root': '.',
+        'relative_to': __file__,
+        'local_scheme': 'node-and-date',
+    },
     ext_modules=[module1],
     packages=['animeface'],
+    setup_requires=['setuptools_scm'],
     install_requires=['pillow'],
     classifiers=[
         'Development Status :: 4 - Beta',
