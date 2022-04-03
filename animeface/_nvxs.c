@@ -141,9 +141,9 @@ static PyObject* pack_results(
         one_result, "likelihood",
         Py_BuildValue("f", face->likelihood));
     PyDict_SetItemString(
-        one_result, "face_pos",
+        one_result, "face_box",
         Py_BuildValue(
-            "((ii)(ii))",
+            "(iiii)",
             face->face.x, face->face.y,
             face->face.width, face->face.height));
     PyDict_SetItemString(
@@ -161,9 +161,9 @@ static PyObject* pack_results(
             (int)face_feature.hair_bgr.v[1],
             (int)face_feature.hair_bgr.v[0]));
     PyDict_SetItemString(
-        one_result, "left_eye_pos",
+        one_result, "left_eye_box",
         Py_BuildValue(
-            "((ii)(ii))",
+            "(iiii)",
             face->left_eye.x, face->left_eye.y,
             face->left_eye.width, face->left_eye.height));
     PyDict_SetItemString(
@@ -174,9 +174,9 @@ static PyObject* pack_results(
             (int)face_feature.left_eye_bgr[0].v[1],
             (int)face_feature.left_eye_bgr[0].v[0]));
     PyDict_SetItemString(
-        one_result, "right_eye_pos",
+        one_result, "right_eye_box",
         Py_BuildValue(
-            "((ii)(ii))",
+            "(iiii)",
             face->right_eye.x, face->right_eye.y,
             face->right_eye.width, face->right_eye.height));
     PyDict_SetItemString(
@@ -187,18 +187,18 @@ static PyObject* pack_results(
             (int)face_feature.right_eye_bgr[0].v[1],
             (int)face_feature.right_eye_bgr[0].v[0]));
     PyDict_SetItemString(
-        one_result, "mouth_pos",
+        one_result, "mouth_box",
         Py_BuildValue(
-            "((ii)(ii))",
+            "(iiii)",
             face->mouth.x, face->mouth.y,
             face->mouth.width, face->mouth.height));
     PyDict_SetItemString(
-        one_result, "nose_pos",
+        one_result, "nose_point",
         Py_BuildValue(
             "(ii)",
             face->nose.x, face->nose.y));
     PyDict_SetItemString(
-        one_result, "chin_pos",
+        one_result, "chin_point",
         Py_BuildValue(
             "(ii)",
             face->chin.x, face->chin.y));

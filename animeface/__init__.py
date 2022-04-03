@@ -12,64 +12,115 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List
+
 from animeface import _nvxs
 
+from PIL.Image import Image
 
-class Position(object):
 
-    def __init__(self, pos_tuple):
-        if isinstance(pos_tuple[0], tuple):
-            self.x, self.y = pos_tuple[0]
-            self.width, self.height = pos_tuple[1]
-        else:
-            self.x, self.y = pos_tuple
+class Point:
+    x: int
+    y: int
+
+    def __init__(self, x: int, y: int):
+        self.x, self.y = x, y
 
     def __repr__(self):
-        if hasattr(self, 'width'):
-            return '(%d, %d; %d, %d)' % (self.x, self.y, self.width,
-                                         self.height)
         return '(%d, %d)' % (self.x, self.y)
 
 
-class Color(object):
+class Box:
+    x: int
+    y: int
+    width: int
+    height: int
 
-    def __init__(self, color_tuple):
-        self.r, self.g, self.b = color_tuple
+    def __init__(self, x: int, y: int, width: int, height: int):
+        self.x, self.y = x, y
+        self.width, self.height = width, height
+
+    def __repr__(self):
+        return '(%d, %d; %d, %d)' % (self.x, self.y, self.width, self.height)
+
+
+class Color:
+    r: int
+    g: int
+    b: int
+
+    def __init__(self, r: int, g: int, b: int):
+        self.r, self.g, self.b = r, g, b
 
     def __repr__(self):
         return '(%d, %d, %d)' % (self.r, self.g, self.b)
 
 
-class Part(object):
+class BoxColorPart:
+    pos: Box
+    color: Color
 
-    def __init__(self, pos_tuple, color_tuple):
-        if pos_tuple:
-            self.pos = Position(pos_tuple)
-        if color_tuple:
-            self.color = Color(color_tuple)
+    def __init__(self, pos: Box, color: Color):
+        self.pos = pos
+        self.color = color
 
     def __repr__(self):
-        segs = []
-        if hasattr(self, 'pos'):
-            segs.append('pos=%r' % self.pos)
-        if hasattr(self, 'color'):
-            segs.append('color=%r' % self.color)
-        return '<%s>' % ', '.join(segs)
+        return '<pos=%r, color=%r>' % (self.pos, self.color)
 
 
-class Face(object):
+class PointPart:
+    pos: Point
+
+    def __init__(self, pos: Point):
+        self.pos = pos
+
+    def __repr__(self):
+        return '<pos=%r>' % (self.pos, )
+
+
+class BoxPart:
+    pos: Box
+
+    def __init__(self, pos: Box):
+        self.pos = pos
+
+    def __repr__(self):
+        return '<pos=%r>' % (self.pos, )
+
+
+class ColorPart:
+    color: Color
+
+    def __init__(self, color: Color):
+        self.color = color
+
+    def __repr__(self):
+        return '<color=%r>' % (self.color, )
+
+
+class Face:
+    likelihood: float
+    face: BoxPart
+    skin: ColorPart
+    hair: ColorPart
+    left_eye: BoxColorPart
+    right_eye: BoxColorPart
+    mouth: BoxPart
+    nose: PointPart
+    chin: PointPart
 
     def __init__(self, result):
         self.likelihood = result['likelihood']
-        self.face = Part(result['face_pos'], None)
-        self.skin = Part(None, result['skin_color'])
-        self.hair = Part(None, result['hair_color'])
-        self.left_eye = Part(result['left_eye_pos'], result['left_eye_color'])
-        self.right_eye = Part(result['right_eye_pos'],
-                              result['right_eye_color'])
-        self.mouth = Part(result['mouth_pos'], None)
-        self.nose = Part(result['nose_pos'], None)
-        self.chin = Part(result['chin_pos'], None)
+        self.face = BoxPart(Box(*result['face_box']))
+        self.skin = ColorPart(Color(*result['skin_color']))
+        self.hair = ColorPart(Color(*result['hair_color']))
+        self.left_eye = BoxColorPart(Box(*result['left_eye_box']),
+                                     Color(*result['left_eye_color']))
+        self.right_eye = BoxColorPart(Box(*result['right_eye_box']),
+                                      Color(*result['right_eye_color']))
+        self.mouth = BoxPart(Box(*result['mouth_box']))
+        self.nose = PointPart(Point(*result['nose_point']))
+        self.chin = PointPart(Point(*result['chin_point']))
 
     def __repr__(self):
         return ('<animeface.Face '
@@ -81,10 +132,10 @@ class Face(object):
                 'right_eye=%(right_eye)r '
                 'mouth=%(mouth)r '
                 'nose=%(nose)r '
-                'chin=%(chin)r ') % self.__dict__
+                'chin=%(chin)r>') % self.__dict__
 
 
-def detect(im):
+def detect(im: Image) -> List[Face]:
     """Detects anime faces.
 
   Args:
