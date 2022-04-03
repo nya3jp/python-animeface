@@ -1,6 +1,6 @@
 # python-animeface
 
-[![Python versions](https://img.shields.io/pypi/pyversions/animeface)](https://pypi.org/project/animeface/)
+[![PyPI](https://img.shields.io/pypi/v/animeface.svg)](https://pypi.python.org/pypi/animeface)
 [![Build](https://github.com/nya3jp/python-animeface/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/nya3jp/python-animeface/actions/workflows/build.yaml)
 [![License](https://img.shields.io/github/license/nya3jp/python-animeface.svg)](https://github.com/nya3jp/python-animeface/blob/main/LICENSE)
 
