@@ -23,6 +23,20 @@ jobs:
       - name: Run yapf
         run: yapf -d -r setup.py animeface
 
+  build_sdist:
+    name: Build sdist
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build sdist
+        run: python3 setup.py sdist
+
+      - uses: actions/upload-artifact@v2
+        with:
+          path: ./dist/*.tar.gz
+
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
