@@ -48,10 +48,10 @@ sudo python setup.py install
 >>> im = PIL.Image.open('/path/to/image.jpg')
 >>> faces = animeface.detect(im)
 >>> faces
-[<animeface.Face likelihood=0.998505 face=<pos=(158, 126; 127, 127)> skin=<color=(252, 239, 232)> hair=<color=(89, 120, 165)> left_eye=<pos=(235, 148; 36, 32), color=(204, 68, 101)> right_eye=<pos=(235, 148; 36, 32), color=(141, 46, 67)> mouth=<pos=(224, 213; 18, 10)> nose=<pos=(222, 199)> chin=<pos=(236, 240)> ]
+[<animeface.Face likelihood=1.000000 face=<pos=(295, 90; 182, 182)> skin=<color=(253, 226, 212)> hair=<color=(199, 194, 196)> left_eye=<pos=(408, 134; 34, 42), color=(92, 42, 49)> right_eye=<pos=(316, 137; 55, 48), color=(79, 33, 39)> mouth=<pos=(372, 202; 32, 23)> nose=<pos=(397, 186)> chin=<pos=(377, 242)>>]
 >>> fp = faces[0].face.pos
->>> print fp.x, fp.y, fp.width, fp.height
-158 126 127 127
+>>> print(fp.x, fp.y, fp.width, fp.height)
+295 90 182 182
 ```
 
 See [`animeface/__init__.py`](animeface/__init__.py) for the API definitions.
