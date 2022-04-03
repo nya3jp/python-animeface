@@ -44,6 +44,7 @@ setuptools.setup(
     url='https://github.com/nya3jp/python-animeface',
     description='A library to detect anime faces in images.',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     use_scm_version={
         'root': '.',
         'relative_to': __file__,
