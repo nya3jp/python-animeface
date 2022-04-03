@@ -7,6 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
+  lint:
+    name: Run linter and formatter
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install tools
+        run: pip install flake8==4.0.1 yapf==0.32.0 toml==0.10.2
+
+      - name: Run flake8
+        run: flake8 setup.py animeface
+
+      - name: Run yapf
+        run: yapf -d -r setup.py animeface
+
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
