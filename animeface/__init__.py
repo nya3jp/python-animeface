@@ -14,9 +14,9 @@
 
 from typing import List
 
-from animeface import _nvxs
-
 from PIL.Image import Image
+
+from animeface import _nvxs
 
 
 class Point:
