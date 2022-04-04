@@ -7,13 +7,12 @@
 python-animeface is a Python wrapper of AnimeFace, a library to detect
 anime character faces in images.
 
-See also [the official website of AnimeFace](http://anime.udp.jp/imager-animeface.html)
-(in Japanese language).
+See also [the official website of AnimeFace] (in Japanese language).
+
+[the official website of AnimeFace]: http://anime.udp.jp/imager-animeface.html
 
 
 ## Installation
-
-### Installation with PIP via PyPI
 
 You can install this module with PIP.
 
@@ -21,10 +20,9 @@ You can install this module with PIP.
 pip install animeface
 ```
 
-
-### Manual installation
-
-First, install libnvxs (the original AnimeFace library). It is included in this repository.
+In case a Python binary package (wheel) is not available for your environment,
+you need to install libnvxs (the original AnimeFace library) before installing
+python-animeface. The source code of libnvxs is included in this repository.
 
 ```
 cd third_party/nvxs-1.0.2
@@ -33,12 +31,6 @@ make
 sudo make install
 ```
 
-Then install python-animeface.
-
-```
-python setup.py build
-sudo python setup.py install
-```
 
 ## Usage
 
@@ -54,7 +46,9 @@ sudo python setup.py install
 295 90 182 182
 ```
 
-See [`animeface/__init__.py`](animeface/__init__.py) for the API definitions.
+See [`animeface/__init__.py`] for the API definitions.
+
+[`animeface/__init__.py`]: https://github.com/nya3jp/python-animeface/blob/main/animeface/__init__.py
 
 
 ## License
