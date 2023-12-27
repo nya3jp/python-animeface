@@ -57,7 +57,7 @@ jobs:
           fetch-depth: "0"
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.3.1
+        uses: pypa/cibuildwheel@v2.16.2
         env:
           # TODO: Remove this option adn build wheels for musllinux.
           # Currently CLAPACK fails to build for musllinux due to lack of
