@@ -51,6 +51,25 @@ See [`animeface/__init__.py`] for the API definitions.
 [`animeface/__init__.py`]: https://github.com/nya3jp/python-animeface/blob/main/animeface/__init__.py
 
 
+## Changelog
+
+### 2.0.3 (2024-12-28)
+
+- Support Python 3.13.
+- Add prebuilts for ARM Mac.
+
+### 2.0.2 (2023-12-28)
+
+- Support Python 3.11-3.12.
+- Drop support of Python 3.6-3.7.
+
+### 2.0.0 (2022-04-04)
+
+- The first modern release.
+- Include prebuilt libnvxs in wheels.
+- Support Python 3.6+.
+- Add type annotations.
+
 ## License
 
 python-animeface is licenced under [Apache License](LICENSE).
