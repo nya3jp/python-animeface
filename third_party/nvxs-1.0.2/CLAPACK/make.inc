@@ -19,7 +19,7 @@ PLAT = _nvxs
 CC        = gcc
 # if no wrapping of the blas library is needed, uncomment next line
 #CC        = gcc -DNO_BLAS_WRAP
-CFLAGS    = -O3 -fPIC -Wno-error=implicit-function-declaration
+CFLAGS    = -O3 -fPIC -Wno-error=implicit-function-declaration -Wno-error=implicit-int
 LOADER    = gcc
 LOADOPTS  =
 ifeq ($(shell uname -s),Linux)
