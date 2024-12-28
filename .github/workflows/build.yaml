@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install tools
         run: pip install flake8==4.0.1 yapf==0.32.0 mypy==0.942 toml==0.10.2
@@ -32,14 +32,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: "0"
 
       - name: Build sdist
         run: python3 setup.py sdist
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: sdist
           path: ./dist/*.tar.gz
@@ -52,19 +52,19 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: "0"
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.16.2
+        uses: pypa/cibuildwheel@v2.22.0
         env:
           # TODO: Remove this option adn build wheels for musllinux.
           # Currently CLAPACK fails to build for musllinux due to lack of
           # fpu_control.h.
           CIBW_SKIP: "*-musllinux_*"
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: wheels
           path: ./wheelhouse/*.whl
@@ -79,13 +79,13 @@ jobs:
 
     steps:
       - name: Download artifacts (sdist)
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: sdist
           path: dist
 
       - name: Download artifacts (wheels)
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: wheels
           path: dist
