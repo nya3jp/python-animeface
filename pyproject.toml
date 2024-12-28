@@ -3,7 +3,7 @@ before-all = [
   "cd third_party/nvxs-1.0.2",
   "./configure",
   "make",
-  "sudo make install",
+  "case "$(uname -s)" in Darwin) sudo make install;; *) make install;; esac",
 ]
 
 [tool.yapf]
