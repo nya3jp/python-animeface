@@ -66,7 +66,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wheels
+          name: wheels-${{ matrix.os }}
           path: ./wheelhouse/*.whl
 
   upload_pypi:
@@ -84,10 +84,16 @@ jobs:
           name: sdist
           path: dist
 
-      - name: Download artifacts (wheels)
+      - name: Download artifacts (wheels-ubuntu-latest)
         uses: actions/download-artifact@v4
         with:
-          name: wheels
+          name: wheels-ubuntu-latest
+          path: dist
+
+      - name: Download artifacts (wheels-macos-latest)
+        uses: actions/download-artifact@v4
+        with:
+          name: wheels-macos-latest
           path: dist
 
       - name: Publish package to Test PyPI
