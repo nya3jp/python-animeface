@@ -55,13 +55,16 @@ See [`animeface/__init__.py`] for the API definitions.
 
 ### 2.0.3 (2024-12-28)
 
-- Support Python 3.13.
+- Fix libnvxs build on modern Mac.
+- Add prebuilts for Python 3.13.
 - Add prebuilts for ARM Mac.
+- Drop prebuilts for Intel Mac.
 
 ### 2.0.2 (2023-12-28)
 
-- Support Python 3.11-3.12.
-- Drop support of Python 3.6-3.7.
+- No functional changes.
+- Add prebuilts for Python 3.11-3.12.
+- Drop prebuilts for Python 3.6-3.7.
 
 ### 2.0.0 (2022-04-04)
 
